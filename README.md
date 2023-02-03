@@ -1,5 +1,5 @@
 # edge-worker-script
-CDN, Cloud edge worker example
+CDN, Cloud edge script example
 
 如何利用海外CDN或Cloud的Edge脚本功能代理一个网站
 
