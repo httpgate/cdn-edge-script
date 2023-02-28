@@ -10,7 +10,7 @@ CDN所采用Web服务器可以执行一些简单的脚本，这样不太复杂�
 
 很多知名的Cloud/CDN运营商都支持Edge边缘计算，语法等可能略有差异，下面仅以cloudflare举例，其它平台大家可以举一反三，参考他们平台的文档和范例。
 
-## 增加 MHDownload 服务
+## 增加 mhdownload 服务
 
 * 注册一个cloudflare账户，点左边菜单Workers->Create Service, 第一次运行会要求你创建一个xxx.workers.dev的二级域名，取一个不太敏感的二级域名，不要用默认值，默认值是你的账号邮箱。
 
