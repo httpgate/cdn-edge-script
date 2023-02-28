@@ -22,6 +22,7 @@ const SITE = 'minghui.org';
 const USER = 'kuqixinzhi';
 const PASS = 'ymdfgckdcllsbskxxzngggddcccdsmbkyqjkqrhhcdsskcssft';
 
+
 export default {
   async fetch(request, env) {
     async function noAccess() {
@@ -55,11 +56,10 @@ export default {
     if(!access) return noAccess();
 
     let url = new URL(request.url);
-    let hostparts = url.host.split('.');
-    let len = hostparts.length;
-    let vhost = hostparts[len-2] + '.' + hostparts[len-1]
-    
+    let service = url.host.split('.')[0]+'.';
+    let vhost = url.host.replace(service,'');
     let turl = request.url.replace(vhost, SITE);
+    
     let target = new Request(turl, {
       body: request.body,
       headers: request.headers,
