@@ -84,7 +84,7 @@ export default {
 
 * 再在examples.com网站上增加 Workers Route， 选 Workers Route -> Http Route -> Add Route
 
-* Route 填：\*.example.com\/\* ,  Service 填：dnsquery
+* Route 填：\*.example.com\/\* ,  Service 填：mhdownload
 
 原始文件链接是:  https://package.minghui.com/jw/2023/1/20/jw20230120-letter.zip
 
