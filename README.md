@@ -89,7 +89,7 @@ export default {
 
 原始文件链接是:  https://package.minghui.com/jw/2023/1/20/jw20230120-letter.zip
 
-新的下载链接是： https://package.example.com/jw/2023/1/20/jw20230120-letter.zip
+新的下载链接是:  https://package.example.com/jw/2023/1/20/jw20230120-letter.zip
 
 其他下载链接也以此类推
 
