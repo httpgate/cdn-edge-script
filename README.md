@@ -77,7 +77,7 @@ export default {
 
 ## 设置下载链接
 
-比如我们需要分享明慧最新文章[为什么会有人类]()的PDF文件，文件链接是https://package.minghui.org/jw/2023/1/20/jw20230120-letter.zip
+比如我们需要分享明慧最新文章[为什么会有人类](https://www.minghui.org/mh/articles/2023/1/20/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E6%9C%89%E4%BA%BA%E7%B1%BB-455562.html)的PDF文件，文件链接是https://package.minghui.org/jw/2023/1/20/jw20230120-letter.zip
 
 * 如果你已经在cloudflare上有一个叫 example.com 的域名，则需要增加一条dns记录，如: *.example.com
 
