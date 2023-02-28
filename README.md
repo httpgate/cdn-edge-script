@@ -22,7 +22,6 @@ const SITE = 'minghui.org';
 const USER = 'kuqixinzhi';
 const PASS = 'ymdfgckdcllsbskxxzngggddcccdsmbkyqjkqrhhcdsskcssft';
 
-
 export default {
   async fetch(request, env) {
     async function noAccess() {
