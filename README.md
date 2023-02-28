@@ -90,7 +90,7 @@ export default {
 
 新的下载链接是:  https://package.example.com/jw/2023/1/20/jw20230120-letter.zip
 
-其他下载链接也以此类推
+其他下载链接也以此类推，这种方式不需要为每个下载文件一一设置url映射，适合经常需要下载各种文件的场合。
 
 
 ## 使用限制
@@ -98,7 +98,9 @@ export default {
 虽然理论上它可以代理一个完整网站，但如果这个网站有链接其它被封锁网站的资源，浏览器会直接访问链接的资源，访问会失败且这种访问也不大安全，不建议在敏感网站上这样访问。
 
 可选择注释掉代码中验证用户密码的部分，但会增加域名example.com被暴露的风险。这两行修改为：
+
 ```
     //await  basicAuthentication(request);
     //if(!access) return noAccess();
 ```
+如果只需要分享少量文件且不需要设置密码，可以用更简单的设置方式，可参考[利用CDN中转DOH]https://github.com/httpgate/wssproxy-agent/blob/main/CDN_PROXY_DOH.md
