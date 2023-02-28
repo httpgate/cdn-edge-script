@@ -14,7 +14,7 @@ CDN所采用Web服务器可以执行一些简单的脚本，这样不太复杂�
 
 * 注册一个cloudflare账户，点左边菜单Workers->Create Service, 第一次运行会要求你创建一个xxx.workers.dev的二级域名，取一个不太敏感的二级域名，不要用默认值，默认值是你的账号邮箱。
 
-* cloudflare会生成一个随机的serivce名，可以修改成好记的，也可以用它随机生成的。假如取名为MHDownload。需要选择脚本模板，随便选一个，点create service按钮
+* cloudflare会生成一个随机的serivce名，可以修改成好记的，也可以用它随机生成的。这里取名为mhdownload。需要选择脚本模板，随便选一个，点create service按钮
 
 * 在出现的代码框里把原来的代码删掉，把下面代码复制到代码框：
 ```
