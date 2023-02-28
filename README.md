@@ -103,4 +103,4 @@ export default {
     //await  basicAuthentication(request);
     //if(!access) return noAccess();
 ```
-如果只需要分享少量文件且不需要设置密码，可以用更简单的设置方式，可参考[利用CDN中转DOH]https://github.com/httpgate/wssproxy-agent/blob/main/CDN_PROXY_DOH.md
+如果只需要分享少量文件且不需要设置密码，可以用更简单的设置方式，可参考[利用CDN中转DOH](https://github.com/httpgate/wssproxy-agent/blob/main/CDN_PROXY_DOH.md)
