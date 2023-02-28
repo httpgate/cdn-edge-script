@@ -97,7 +97,7 @@ export default {
 
 虽然理论上它可以代理一个完整网站，但如果这个网站有链接其它被封锁网站的资源，浏览器会直接访问链接的资源，访问会失败且这种访问也不大安全，不建议在敏感网站上这样访问。
 
-可选则注释掉代码中验证用户密码的部分，但会增加域名example.com被暴露的风险。这两行修改为：
+可选择注释掉代码中验证用户密码的部分，但会增加域名example.com被暴露的风险。这两行修改为：
 ```
     //await  basicAuthentication(request);
     //if(!access) return noAccess();
