@@ -3,19 +3,22 @@ CDN, Cloud edge script example
 
 如何利用海外CDN或Cloud的Edge脚本功能代理一个网站
 
+非常适合用来下载和传播某个网站的可下载文件，或视频音频等
+
 ## 关于Edge
 CDN所采用Web服务器可以执行一些简单的脚本，这样不太复杂的任务就不需要转发给另一台运行php的中央服务器，消除了网络瓶颈。因为分布式的CDN服务器更靠近用户，所以这种计算方式称作Edge边缘计算。
 
 很多知名的Cloud/CDN运营商都支持Edge边缘计算，语法等可能略有差异，下面仅以cloudflare举例，其它平台大家可以举一反三，参考他们平台的文档和范例。
 
-## 使用
-* 注册一个cloudflare账户，点左边菜单Workers->Create Service, 第一次运行会要求你创建一个xxx.worker.dev的二级域名，取一个不太敏感的二级域名，不要用默认值，默认值是你的账号邮箱。
+## 增加 MHDownload 服务
 
-* cloudflare会生成一个随机的serivce名，可以修改成好记的，也可以用它随机生成的。需要选择脚本模板，随便选一个，点create service按钮
+* 注册一个cloudflare账户，点左边菜单Workers->Create Service, 第一次运行会要求你创建一个xxx.workers.dev的二级域名，取一个不太敏感的二级域名，不要用默认值，默认值是你的账号邮箱。
+
+* cloudflare会生成一个随机的serivce名，可以修改成好记的，也可以用它随机生成的。假如取名为MHDownload。需要选择脚本模板，随便选一个，点create service按钮
 
 * 在出现的代码框里把原来的代码删掉，把下面代码复制到代码框：
 ```
-const SITE = 'www.minghui.org';
+const SITE = 'minghui.org';
 const USER = 'kuqixinzhi';
 const PASS = 'ymdfgckdcllsbskxxzngggddcccdsmbkyqjkqrhhcdsskcssft';
 
@@ -52,7 +55,11 @@ export default {
     if(!access) return noAccess();
 
     let url = new URL(request.url);
-    let turl = request.url.replace(url.host, SITE);
+    let hostparts = url.host.split('.');
+    let len = hostparts.length;
+    let vhost = hostparts[len-2] + '.' + hostparts[len-1]
+    
+    let turl = request.url.replace(vhost, SITE);
     let target = new Request(turl, {
       body: request.body,
       headers: request.headers,
@@ -65,6 +72,29 @@ export default {
 ```
 * 修改代码里的SITE, USER, PASS 的值为你想要访问的网站，访问用户名和密码， 点下方的“Save and Deploy"按钮
 
-* 点"Preview"标签查看效果，输入你设置的用户名和密码即可访问。 "Preview"标签下的网址可以分享给朋友访问。
+* 点"Preview"标签查看效果，输入你设置的用户名和密码即可访问。但workers.dev一般情况下是封锁的，所以还需要映射成一个其他网址
 
-* 这种代理方式的缺点就是它只能代理一个网站，这个网站如果有链接的其它被封锁网站的资源，浏览器会直接访问链接的资源，访问会失败且这种访问也不大安全，敏感人士需谨慎使用。
+
+## 设置下载链接
+
+比如我们需要分享明慧最新文章[为什么会有人类]()的PDF文件，文件链接是https://package.minghui.org/jw/2023/1/20/jw20230120-letter.zip
+
+* 如果你已经在cloudflare上有一个叫 example.com 的域名，则需要增加一条dns记录，如: *.example.com
+
+* 设置新增dns记录 Name: * , Type: CNAME , Target: workers.dev
+
+* 再在examples.com网站上增加 Workers Route， 选 Workers Route -> Http Route -> Add Route
+
+* Route 填：*.example.com ,  Service 填：dnsquery
+
+原始文件链接是:  https://package.minghui.com/jw/2023/1/20/jw20230120-letter.zip
+
+新的下载链接是： https://package.example.com/jw/2023/1/20/jw20230120-letter.zip
+
+其他下载链接也以此类推
+
+
+## 使用限制
+
+虽然理论上它可以代理一个完整网站，但如果这个网站有链接其它被封锁网站的资源，浏览器会直接访问链接的资源，访问会失败且这种访问也不大安全，不建议在敏感网站上这样访问。
+
